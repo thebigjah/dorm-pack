@@ -7,239 +7,392 @@
 <meta name="description" content="Pre-loaded packing checklist for UA freshman move-in. 130+ items across 11 categories. Check off as you pack. Add custom items.">
 <meta property="og:title" content="Dorm Pack — UA move-in checklist">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+/*  ============================================================
+    DORM PACK · Alabama freshman moving-day manifest
+    -----------------------------------------------------------
+    Theme: a U-Haul / moving-day inventory sheet for Alabama
+    freshman move-in. Cardboard-tan + Crimson Tide red + houndstooth
+    accent. Bebas Neue all-caps display (signage type used by
+    moving companies + sports brands). Roboto Slab body. Roboto
+    Mono inventory numbers. Manifest-table feel for the checklist.
+    ============================================================ */
   :root {
-    --bg: #f4f0e4;
-    --panel: #fdfaef;
-    --ink: #1d1812;
-    --ink-soft: #6b5a44;
-    --ink-faint: #a89880;
-    --accent: #8a2828;
-    --accent-light: #a85050;
-    --crimson: #9e1b32;
-    --done: #4a7c3d;
-    --border: #d8cbb0;
-    --serif: Georgia, "Times New Roman", serif;
+    --box:#d8c290;
+    --box-shade:#c2a972;
+    --box-deep:#a88e58;
+    --paper:#f7eed8;
+    --kraft:#e8d8a8;
+    --ink:#0a0a0a;
+    --ink-soft:#2a2a26;
+    --ink-faint:#7a7060;
+    --crimson:#9e1b32;
+    --crimson-bright:#c43048;
+    --crimson-deep:#6e1024;
+    --houndstooth:#1a1a1a;
+    --done:#3e6a32;
+    --tape:#d8a06a;
+    --rule:rgba(10, 10, 10, 0.20);
+    --rule-strong:rgba(10, 10, 10, 0.42);
+    --bg: var(--box);
+    --panel: var(--paper);
+    --accent: var(--crimson);
+    --accent-light: var(--crimson-bright);
+    --border: var(--rule);
+
+    --display:'Bebas Neue', Impact, sans-serif;
+    --body:'Roboto Slab', Georgia, serif;
+    --mono:'Roboto Mono', monospace;
+    --serif: var(--body);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background: var(--bg);
+    font-family: var(--body);
+    background: var(--box);
     color: var(--ink);
     line-height: 1.5;
     min-height: 100vh;
     padding: 1rem;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    /* Cardboard grain — subtle horizontal striations */
+    background-image: repeating-linear-gradient(180deg,
+      transparent 0px, transparent 24px,
+      rgba(122, 90, 50, 0.04) 24px, rgba(122, 90, 50, 0.04) 25px);
+    position: relative;
   }
-  .container { max-width: 760px; margin: 0 auto; }
-  header { text-align: center; padding: 2rem 0; }
+  body::before {
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity:0.08;mix-blend-mode:multiply;
+  }
+  .container { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; }
+  header {
+    text-align: left;
+    padding: 28px 0 18px;
+    margin-bottom: 18px;
+    border-top: 6px solid var(--crimson);
+    border-bottom: 1.5px solid var(--ink);
+    position: relative;
+    background: var(--paper);
+    padding-left: 24px; padding-right: 24px;
+  }
+  header::after {
+    /* Packing-tape strip across the top of the box */
+    content:""; position: absolute; top: -6px; right: 24px;
+    width: 80px; height: 18px; background: var(--tape);
+    transform: rotate(2deg);
+    opacity: 0.7;
+  }
+  .manifest-label {
+    display: inline-block;
+    font-family: var(--mono); font-weight: 700;
+    font-size: 10.5px; letter-spacing: 0.3em;
+    color: var(--crimson); text-transform: uppercase;
+    margin-bottom: 10px;
+    border: 2px solid var(--crimson);
+    padding: 4px 10px;
+  }
   header h1 {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 6vw, 2.6rem);
-    color: var(--crimson);
-    margin-bottom: 0.4rem;
+    font-family: var(--display); font-weight: 400;
+    font-size: clamp(56px, 9vw, 88px);
+    color: var(--ink);
+    letter-spacing: 0.005em;
+    margin: 0;
+    line-height: 0.9;
+    text-transform: uppercase;
   }
+  header h1 .accent { color: var(--crimson); }
   header p {
-    color: var(--ink-soft);
-    font-style: italic;
-    font-size: 0.95rem;
+    font-family: var(--mono); font-weight: 500;
+    color: var(--ink-soft); font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 10px;
   }
 
   .stats {
-    display: flex;
-    gap: 0.6rem;
-    margin-bottom: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0;
+    margin-bottom: 12px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
   }
   .stat {
-    text-align: center;
-    padding: 0.75rem 1.25rem;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    text-align: left;
+    padding: 14px 18px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--rule);
+    border-radius: 0;
   }
+  .stat:last-child { border-right: none; }
   .stat .n {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    color: var(--crimson);
-    line-height: 1.1;
+    font-family: var(--display); font-weight: 400;
+    font-size: 36px;
+    color: var(--crimson); line-height: 1;
+    letter-spacing: -0.005em;
   }
   .stat .l {
-    font-size: 0.7rem;
-    color: var(--ink-soft);
+    font-family: var(--mono); font-weight: 700;
+    font-size: 9.5px; color: var(--ink-soft);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 0.2rem;
+    letter-spacing: 0.22em;
+    margin-top: 8px;
+    display: block;
   }
   .progress {
-    height: 6px;
-    background: var(--panel);
-    border-radius: 3px;
+    height: 10px;
+    background: var(--kraft);
+    border-radius: 0;
     overflow: hidden;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border);
+    margin-bottom: 22px;
+    border: 1.5px solid var(--ink);
+    position: relative;
+  }
+  .progress::after {
+    content:""; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(90deg,
+      transparent 0, transparent 9%, rgba(10, 10, 10, 0.18) 9%, rgba(10, 10, 10, 0.18) 10%);
   }
   .progress-bar {
     height: 100%;
     background: var(--crimson);
     transition: width 0.3s;
+    position: relative; z-index: 1;
   }
 
   .tabs {
-    display: flex;
-    gap: 0.4rem;
-    margin-bottom: 1.5rem;
+    display: flex; gap: 0;
+    margin-bottom: 22px;
     flex-wrap: wrap;
-    justify-content: center;
+    border-top: 1.5px solid var(--ink);
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--paper);
   }
   .tab {
-    padding: 0.5rem 1rem;
+    padding: 11px 22px;
     background: transparent;
     color: var(--ink-soft);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 0.8rem;
+    border: none;
+    border-right: 1px solid var(--rule);
+    border-radius: 0;
+    font-family: var(--display); font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     cursor: pointer;
+    position: relative;
   }
+  .tab:last-child { border-right: none; }
   .tab.active {
     background: var(--crimson);
-    color: var(--bg);
-    border-color: var(--crimson);
+    color: var(--paper);
   }
-  .tab:hover:not(.active) { border-color: var(--crimson); color: var(--ink); }
+  .tab:hover:not(.active) { background: var(--kraft); color: var(--ink); }
 
   .category-section {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1rem;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    border-left: 5px solid var(--crimson);
+    border-radius: 0;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    position: relative;
   }
+  .category-section::before {
+    /* 'BOX N' label tab at top-right of each category */
+    counter-increment: cat-counter;
+    content:"BOX " counter(cat-counter, decimal-leading-zero);
+    position: absolute; top: -1px; right: -1px;
+    background: var(--ink); color: var(--kraft);
+    font-family: var(--mono); font-weight: 700;
+    font-size: 9.5px; letter-spacing: 0.22em;
+    padding: 4px 10px;
+  }
+  #categories-container { counter-reset: cat-counter; }
   .category-section h3 {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    color: var(--crimson);
-    margin-bottom: 0.5rem;
+    font-family: var(--display); font-weight: 400;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
+    padding-bottom: 8px; border-bottom: 1px dashed var(--rule);
+    padding-right: 80px;
   }
   .category-section h3 .count {
-    color: var(--ink-soft);
-    font-family: inherit;
-    font-size: 0.78rem;
+    font-family: var(--mono); font-weight: 700;
+    color: var(--crimson); font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: normal;
+    letter-spacing: 0.22em;
   }
 
   .item {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border);
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px dotted var(--rule);
+    counter-increment: item-counter;
   }
+  .category-section { counter-reset: item-counter; }
   .item:last-child { border-bottom: none; }
+  .item::before {
+    content: counter(item-counter, decimal-leading-zero);
+    font-family: var(--mono); font-weight: 500;
+    font-size: 10px; color: var(--ink-faint);
+    width: 24px; letter-spacing: 0.04em;
+  }
   .item input[type="checkbox"] {
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 16px;
+    height: 16px;
     accent-color: var(--crimson);
     cursor: pointer;
     flex-shrink: 0;
   }
   .item .text {
     flex: 1;
+    font-family: var(--body); font-weight: 500;
     color: var(--ink);
-    font-size: 0.95rem;
+    font-size: 14.5px;
   }
   .item.packed .text {
     color: var(--ink-faint);
     text-decoration: line-through;
   }
+  .item.packed::after {
+    content:"PACKED"; margin-left: 8px;
+    font-family: var(--mono); font-weight: 700;
+    font-size: 8.5px; color: var(--done);
+    letter-spacing: 0.2em;
+    border: 1px solid var(--done);
+    padding: 2px 6px;
+  }
   .item .note {
+    font-family: var(--body); font-style: italic;
     color: var(--ink-faint);
-    font-size: 0.78rem;
-    font-style: italic;
+    font-size: 12.5px;
   }
   .item .delete {
     background: transparent;
     color: var(--ink-faint);
     border: none;
     cursor: pointer;
-    font-size: 0.85rem;
-    padding: 0.2rem 0.4rem;
+    font-family: var(--mono); font-weight: 500;
+    font-size: 12px;
+    padding: 2px 6px;
   }
-  .item .delete:hover { color: var(--accent); }
+  .item .delete:hover { color: var(--crimson); }
 
   .add-item-form {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.5rem;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    border-radius: 0;
+    padding: 22px 26px;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .add-item-form::before {
+    /* 'STAMP' tab top-right */
+    content:"CUSTOM";
+    position: absolute; top: -1px; right: -1px;
+    background: var(--crimson); color: var(--paper);
+    font-family: var(--mono); font-weight: 700;
+    font-size: 9.5px; letter-spacing: 0.22em;
+    padding: 4px 10px;
   }
   .add-item-form h3 {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    color: var(--crimson);
-    margin-bottom: 0.85rem;
+    font-family: var(--display); font-weight: 400;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding-bottom: 6px; border-bottom: 1px dashed var(--rule);
+    padding-right: 80px;
   }
   .form-row {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr auto;
-    gap: 0.5rem;
+    gap: 8px;
   }
   @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
 
   input[type="text"], select {
-    border: 1px solid var(--border);
-    background: #fff;
-    border-radius: 6px;
-    padding: 0.6rem 0.85rem;
+    border: none;
+    border-bottom: 1.5px solid var(--ink);
+    background: transparent;
+    border-radius: 0;
+    padding: 8px 4px;
     color: var(--ink);
-    font-family: inherit;
-    font-size: 0.9rem;
+    font-family: var(--body); font-weight: 500;
+    font-size: 14.5px;
   }
-  input:focus, select:focus { outline: none; border-color: var(--crimson); }
+  input:focus, select:focus { outline: none; border-bottom-color: var(--crimson); }
+  input::placeholder { color: var(--ink-faint); font-style: italic; }
 
   button {
     background: var(--ink);
-    color: var(--bg);
+    color: var(--paper);
     border: none;
-    padding: 0.6rem 1.1rem;
-    border-radius: 6px;
+    padding: 10px 18px;
+    border-radius: 0;
     cursor: pointer;
-    font-family: inherit;
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-family: var(--mono); font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
   }
   button:hover { background: var(--crimson); }
   button.ghost {
     background: transparent;
-    color: var(--ink-soft);
-    border: 1px solid var(--border);
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
   }
-  button.ghost:hover { color: var(--ink); border-color: var(--crimson); }
+  button.ghost:hover { background: var(--ink); color: var(--paper); }
 
-  .row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; justify-content: center; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; justify-content: flex-start; }
 
   footer {
     text-align: center;
-    margin-top: 2rem;
-    color: var(--ink-faint);
-    font-size: 0.8rem;
+    margin-top: 32px;
+    padding: 22px 0 32px;
+    color: var(--ink-soft);
+    font-family: var(--mono); font-weight: 500;
+    font-size: 11px;
+    border-top: 6px solid var(--crimson);
+    background: var(--paper);
+    margin-left: -1rem; margin-right: -1rem;
+    padding-left: 1rem; padding-right: 1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
-  footer a { color: var(--crimson); text-decoration: none; }
+  footer a { color: var(--crimson); text-decoration: none; border-bottom: 1px solid var(--crimson); }
+  .credit-line {
+    display: block;
+    font-family: var(--mono); font-weight: 700;
+    font-size: 9px; letter-spacing: 0.42em;
+    color: var(--ink-faint); margin-top: 14px;
+    opacity: 0.7;
+  }
 </style>
 </head>
 <body>
 <div class="container">
 
 <header>
-  <h1>Dorm Pack</h1>
-  <p>UA move-in checklist · Tuscaloosa or bust</p>
+  <span class="manifest-label">Manifest No. 2026-08-15 · Acworth → Tuscaloosa</span>
+  <h1>Dorm <span class="accent">Pack</span></h1>
+  <p>UA Move-in Checklist · Roll Tide · Box by Box</p>
 </header>
 
 <div class="stats" id="stats"></div>
@@ -286,7 +439,8 @@
 
 <footer>
   <p>Roll Tide · Built before move-in day so you don't forget the can opener.<br>
-  <a href="https://github.com/thebigjah/dorm-pack">source</a></p>
+  <a href="https://github.com/thebigjah/dorm-pack">github.com/thebigjah/dorm-pack</a></p>
+  <div class="credit-line">— PURCELLVENTURES.CO —</div>
 </footer>
 
 </div>
