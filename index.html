@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dorm Pack, UA move-in checklist | Elijah Purcell</title>
 <meta name="description" content="A University of Alabama freshman move-in checklist: 130 items across 11 categories, add your own. By Elijah Purcell, Purcell Ventures LLC.">
-<meta property="og:title" content="Dorm Pack — UA move-in checklist">
+<meta property="og:title" content="Dorm Pack, UA move-in checklist">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +58,7 @@
     padding: 1rem;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
-    /* Cardboard grain — subtle horizontal striations */
+    /* Cardboard grain, subtle horizontal striations */
     background-image: repeating-linear-gradient(180deg,
       transparent 0px, transparent 24px,
       rgba(122, 90, 50, 0.04) 24px, rgba(122, 90, 50, 0.04) 25px);
@@ -442,7 +442,7 @@
 <footer>
   <p>Roll Tide · Built before move-in day so you don't forget the can opener.<br>
   <a href="https://github.com/thebigjah/dorm-pack">github.com/thebigjah/dorm-pack</a></p>
-  <div class="credit-line">— PURCELLVENTURES.CO —</div>
+  <div class="credit-line">, PURCELLVENTURES.CO,</div>
 </footer>
 
 </div>
@@ -469,7 +469,7 @@ const CATEGORIES = [
 
 const DEFAULTS = [
   // Bedding & Linens (UA dorm beds are XL twin)
-  { cat:'Bedding & Linens', text:'Twin XL mattress topper', note:'UA beds are twin XL — not regular twin' },
+  { cat:'Bedding & Linens', text:'Twin XL mattress topper', note:'UA beds are twin XL, not regular twin' },
   { cat:'Bedding & Linens', text:'Mattress protector (twin XL)' },
   { cat:'Bedding & Linens', text:'Fitted sheets x2 (twin XL)' },
   { cat:'Bedding & Linens', text:'Flat sheet (optional)' },
@@ -491,7 +491,7 @@ const DEFAULTS = [
   { cat:'Clothing', text:'Winter coat (for Dec-Feb)' },
   { cat:'Clothing', text:'Button-downs x3', note:'church + first-impression meetings' },
   { cat:'Clothing', text:'Khakis or chinos x2' },
-  { cat:'Clothing', text:'Suit + dress shirt + tie', note:'one full set — bama bound dress nights' },
+  { cat:'Clothing', text:'Suit + dress shirt + tie', note:'one full set, bama bound dress nights' },
   { cat:'Clothing', text:'Dress shoes' },
   { cat:'Clothing', text:'Sneakers x2 (one for walking, one for athletic)' },
   { cat:'Clothing', text:'Slides / sandals' },
@@ -737,7 +737,7 @@ function renderList() {
         ${items.map(i => `
           <div class="item ${i.packed ? 'packed' : ''}" data-id="${i.id}">
             <input type="checkbox" ${i.packed ? 'checked' : ''} onchange="toggleItem('${i.id}')">
-            <div class="text">${escapeHtml(i.text)}${i.note ? ` <span class="note">— ${escapeHtml(i.note)}</span>` : ''}</div>
+            <div class="text">${escapeHtml(i.text)}${i.note ? ` <span class="note">, ${escapeHtml(i.note)}</span>` : ''}</div>
             <button class="delete" onclick="deleteItem('${i.id}')">×</button>
           </div>
         `).join('')}
@@ -756,7 +756,7 @@ function exportJSON() {
   a.click();
 }
 function exportMd() {
-  let md = '# Dorm Pack — ' + todayKey() + '\n\n';
+  let md = '# Dorm Pack, ' + todayKey() + '\n\n';
   const grouped = {};
   state.items.forEach(i => {
     const c = i.cat || 'School Supplies';
